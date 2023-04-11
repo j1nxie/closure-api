@@ -1,9 +1,7 @@
-# exusiai-notes
+# closure-api
 
-`exusiai-notes` (stylized as ExusiaiNotes) is a daily timer, and (possibly) a
-database for Arknights. Name is inspired by similar projects for Princess
-Connect! Re:Dive, [ShizuruNotes](https://github.com/MalitsPlus/ShizuruNotes)
-and [HatsuneNotes/PrincessGuide](https://github.com/superk589/PrincessGuide).
+`closure-api` is a simple API used for obtaining the current running event
+for Arknights, done by scraping https://gamepress.gg/.
 
 ## license
 
