@@ -13,7 +13,7 @@
   },
   "keywords": [],
   "author": "j1nxie",
-  "license": "ISC",
+  "license": "MIT",
   "config": {
     "commitizen": {
       "path": "@commitlint/cz-commitlint"
