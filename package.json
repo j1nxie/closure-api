@@ -24,6 +24,7 @@
     "@commitlint/cli": "^17.5.1",
     "@commitlint/config-conventional": "^17.4.4",
     "@commitlint/cz-commitlint": "^17.5.0",
+    "@types/jsdom": "^21.1.1",
     "commitizen": "^4.3.0",
     "eslint": "^8.37.0",
     "eslint-config-prettier": "^8.8.0",
@@ -36,7 +37,6 @@
   },
   "dependencies": {
     "@fastify/cors": "^8.2.1",
-    "@types/jsdom": "^21.1.1",
     "fastify": "^4.15.0",
     "jsdom": "^21.1.1",
     "node-fetch": "^3.3.1"
