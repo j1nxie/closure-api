@@ -3,6 +3,18 @@ import fetch from "node-fetch";
 
 const BASE_URL = "https://gamepress.gg/arknights/";
 
+class Event {
+	constructor() {
+		this.name = "";
+		this.link = "";
+		this.banner = "";
+	}
+
+	name: string;
+	link: string;
+	banner: string;
+}
+
 async function getEvent() {
 	try {
 		const html = await fetch(BASE_URL, {
@@ -34,22 +46,23 @@ async function getEvent() {
 			".field.field--name-field-page-content.field--type-entity-reference-revisions.field--label-hidden.field__items"
 		)!.children[0];
 
-		const imageElements = eventList.getElementsByTagName("img");
-		let event;
+		const event = new Event();
 
-		if (imageElements.length === 2) {
-			event = imageElements[1];
+		const eventElement = eventList.getElementsByTagName("a");
+		let eventImage;
+
+		if (eventElement.length === 2) {
+			eventImage = eventElement[1].getElementsByTagName("img")[0];
+			event.link = eventElement[1].href;
 		} else {
-			event = imageElements[0];
+			eventImage = eventElement[0].getElementsByTagName("img")[0];
+			event.link = eventElement[0].href;
 		}
 
-		const eventName = event.alt;
-		const eventBanner = event.src;
+		event.name = eventImage.alt;
+		event.banner = eventImage.src;
 
-		return {
-			eventName,
-			eventBanner,
-		};
+		return event;
 	} catch (err) {
 		return `error: ${err}`;
 	}
