@@ -1,4 +1,5 @@
 import eventRouter from "./eventRoute.js";
+import statusRouter from "./statusRoute.js";
 import cors from "@fastify/cors";
 import * as dotenv from "dotenv";
 import fastify from "fastify";
@@ -11,6 +12,7 @@ const app = fastify({
 });
 
 void app.register(eventRouter, { prefix: "/api" });
+void app.register(statusRouter, { prefix: "/api" });
 
 async function start() {
 	try {
