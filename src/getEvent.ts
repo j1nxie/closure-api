@@ -62,9 +62,15 @@ async function getEvent() {
 		event.name = eventImage.alt;
 		event.banner = eventImage.src;
 
-		return event;
+		return {
+			success: true,
+			data: event,
+		};
 	} catch (err) {
-		return `error: ${err}`;
+		return {
+			success: false,
+			error: err,
+		};
 	}
 }
 
