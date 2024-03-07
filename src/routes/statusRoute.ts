@@ -18,11 +18,13 @@ function getStatus() {
 				serverTime: Date.now(),
 				version: VERSION_PRETTY,
 			},
+			timestamp: Date.now(),
 		};
 	} catch (err) {
 		return {
 			success: false,
 			error: err,
+			timestamp: Date.now(),
 		};
 	}
 }

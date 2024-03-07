@@ -90,11 +90,13 @@ async function getEvent() {
 		return {
 			success: true,
 			data,
+			timestamp: Date.now(),
 		};
 	} catch (err) {
 		return {
 			success: false,
 			error: err,
+			timestamp: Date.now(),
 		};
 	}
 }
