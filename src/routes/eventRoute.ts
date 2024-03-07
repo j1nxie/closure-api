@@ -14,12 +14,14 @@ const BASE_URL = "https://gamepress.gg/arknights/";
 class Event {
 	constructor() {
 		this.name = "";
-		this.link = "";
+		this.start = 0;
+		this.end = 0;
 		this.banner = "";
 	}
 
 	name: string;
-	link: string;
+	start: number;
+	end: number;
 	banner: string;
 }
 
@@ -49,29 +51,45 @@ async function getEvent() {
 		const document = dom.window.document;
 
 		/* eslint-disable @typescript-eslint/no-non-null-assertion */
-		const eventList = document.querySelector(
-			".field.field--name-field-page-content.field--type-entity-reference-revisions.field--label-hidden.field__items"
-		)!.children[0];
+		const eventList = Array.from(
+			document
+				.querySelector(
+					".field.field--name-field-page-content.field--type-entity-reference-revisions.field--label-hidden.field__items"
+				)!
+				.children[0].querySelectorAll(
+					".clearfix.text-formatted.field.field--name-field-text.field--type-text-long.field--label-hidden.field__item"
+				)
+		).filter((x) => x.getElementsByTagName("a").length !== 0);
 
-		const event = new Event();
+		const data = [];
 
-		const eventElement = eventList.getElementsByTagName("a");
-		let eventImage;
+		for (const event of eventList) {
+			const name = event.children[1]
+				.getAttribute("data-countdown-name")!
+				.replace("[", "")
+				.replace("]", "");
+			const timezone = event.children[1].getAttribute("data-countdown-timezone")!;
+			const start = Date.parse(
+				`${event.children[1].getAttribute("data-countdown-start")} ${timezone}`
+			);
+			const end = Date.parse(
+				`${event.children[1].getAttribute("data-countdown-end")} ${timezone}`
+			);
+			const banner = event.children[0].getElementsByTagName("img")[0].src;
 
-		if (eventElement.length === 2) {
-			eventImage = eventElement[1].getElementsByTagName("img")[0];
-			event.link = eventElement[1].href;
-		} else {
-			eventImage = eventElement[0].getElementsByTagName("img")[0];
-			event.link = eventElement[0].href;
+			const result = new Event();
+
+			result.name = name;
+			result.start = start;
+			result.end = end;
+			result.banner = banner;
+
+			data.push(result);
 		}
-
-		event.name = eventImage.alt;
-		event.banner = eventImage.src;
 
 		return {
 			success: true,
-			data: event,
+			data,
 		};
 	} catch (err) {
 		return {
