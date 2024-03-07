@@ -1,6 +1,6 @@
 FROM node:lts-alpine AS builder
 
-LABEL version="1.3.0"
+LABEL version="1.3.1"
 LABEL description="an API to fetch the current arknights event from gamepress.gg"
 LABEL maintainer="j1nxie <rylie@rylie.moe>"
 
