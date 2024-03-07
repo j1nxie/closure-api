@@ -1,4 +1,4 @@
-import getStatus from "./getStatus.js";
+import { VERSION_PRETTY } from "../constants/version.js";
 import type { FastifyInstance } from "fastify";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -9,3 +9,20 @@ function statusRouter(fastify: FastifyInstance, options: any, done: any) {
 }
 
 export default statusRouter;
+
+function getStatus() {
+	try {
+		return {
+			success: true,
+			data: {
+				serverTime: Date.now(),
+				version: VERSION_PRETTY,
+			},
+		};
+	} catch (err) {
+		return {
+			success: false,
+			error: err,
+		};
+	}
+}

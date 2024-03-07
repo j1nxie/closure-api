@@ -1,5 +1,13 @@
 import { JSDOM } from "jsdom";
 import fetch from "node-fetch";
+import type { FastifyInstance } from "fastify";
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+function eventRouter(fastify: FastifyInstance, options: any, done: any) {
+	fastify.get("/event", getEvent);
+	done();
+}
 
 const BASE_URL = "https://gamepress.gg/arknights/";
 
@@ -73,4 +81,4 @@ async function getEvent() {
 	}
 }
 
-export default getEvent;
+export default eventRouter;

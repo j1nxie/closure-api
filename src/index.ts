@@ -1,5 +1,5 @@
-import eventRouter from "./eventRoute.js";
-import statusRouter from "./statusRoute.js";
+import eventRouter from "./routes/eventRoute.js";
+import statusRouter from "./routes/statusRoute.js";
 import cors from "@fastify/cors";
 import * as dotenv from "dotenv";
 import fastify from "fastify";
