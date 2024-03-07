@@ -9,18 +9,11 @@
     "dev": "nodemon src/index.ts",
     "watch-node": "nodemon dist/index.js",
     "watch-ts": "tsc -w",
-    "start": "node dist/index.js",
-    "postinstall": "husky install",
-    "commit": "cz"
+    "start": "node dist/index.js"
   },
   "keywords": [],
   "author": "j1nxie",
   "license": "MIT",
-  "config": {
-    "commitizen": {
-      "path": "@commitlint/cz-commitlint"
-    }
-  },
   "nodemonConfig": {
     "execMap": {
       "ts": "node --loader ts-node/esm"
@@ -28,29 +21,29 @@
   },
   "devDependencies": {
     "@cadencejs/eslint-plugin": "^0.1.0",
-    "@commitlint/cli": "^17.5.1",
-    "@commitlint/config-conventional": "^17.4.4",
-    "@commitlint/cz-commitlint": "^17.5.0",
-    "@types/jsdom": "^21.1.1",
-    "@types/semver": "^7.5.6",
-    "commitizen": "^4.3.0",
-    "eslint": "^8.37.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-cadence": "^0.1.0",
-    "husky": "^8.0.3",
-    "inquirer": "^8.2.5",
-    "nodemon": "^2.0.22",
-    "stylelint": "^15.4.0",
-    "stylelint-config-standard": "^32.0.0",
-    "ts-node": "^10.9.1",
-    "typescript": "^4.9.5"
+    "@types/jsdom": "^21.1.6",
+    "@types/semver": "^7.5.8",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-cadence": "^0.1.1",
+    "inquirer": "^9.2.15",
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.2"
   },
   "dependencies": {
-    "@fastify/cors": "^8.2.1",
-    "dotenv": "^16.0.3",
-    "fastify": "^4.15.0",
-    "jsdom": "^21.1.1",
-    "node-fetch": "^3.3.1",
-    "semver": "^7.5.4"
+    "@fastify/cors": "^9.0.1",
+    "dotenv": "^16.4.5",
+    "fastify": "^4.26.2",
+    "jsdom": "^24.0.0",
+    "node-fetch": "^3.3.2",
+    "redis": "^4.6.13",
+    "semver": "^7.6.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "@typescript-eslint/eslint-plugin": "7.1.1",
+      "@typescript-eslint/parser": "7.1.1"
+    }
   }
 }
