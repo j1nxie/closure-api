@@ -33,7 +33,6 @@ async function getEvent() {
 				cookie: "SSESSf1fb0a9c0c1f97d9ff71d05ced8d6063=ArpkhEC7pPUGTOc-5nRrTmOKu3efHuTwEtBUJs2wblY",
 			},
 			referrerPolicy: "strict-origin-when-cross-origin",
-			body: null,
 			method: "GET",
 		});
 		const text = await html.text();
