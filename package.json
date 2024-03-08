@@ -13,7 +13,7 @@
   },
   "keywords": [],
   "author": "j1nxie",
-  "license": "MIT",
+  "license": "MIT or Apache-2.0",
   "nodemonConfig": {
     "execMap": {
       "ts": "node --loader ts-node/esm"
