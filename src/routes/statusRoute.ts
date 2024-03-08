@@ -15,7 +15,7 @@ function getStatus() {
 		return {
 			success: true,
 			data: {
-				serverTime: Date.now(),
+				serverTime: new Date(Date.now()).toString(),
 				version: VERSION_PRETTY,
 			},
 			timestamp: Date.now(),
