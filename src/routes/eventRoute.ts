@@ -1,3 +1,4 @@
+import logger from "../logger.js";
 import client from "../redis.js";
 import { JSDOM } from "jsdom";
 import fetch from "node-fetch";
@@ -6,13 +7,15 @@ import type { FastifyInstance } from "fastify";
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 function eventRouter(fastify: FastifyInstance, options: any, done: any) {
-	fastify.get("/event", async () => {
+	fastify.get("/event", async (req) => {
+		logger.info(`received request to path ${req.routeOptions.url}`);
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 		const data = JSON.parse((await client.get("cache")) ?? "null");
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
 		const timestamp = data === null ? null : data.timestamp;
 
 		if (Date.now() - timestamp >= 86400000 || timestamp === null) {
+			logger.info("cache out of date. fetching new data from gamepress.");
 			const response = await getEvent();
 
 			await client.set("cache", JSON.stringify(response));

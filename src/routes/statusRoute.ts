@@ -1,10 +1,14 @@
 import { VERSION_PRETTY } from "../constants/version.js";
+import logger from "../logger.js";
 import type { FastifyInstance } from "fastify";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 function statusRouter(fastify: FastifyInstance, options: any, done: any) {
-	fastify.get("/status", getStatus);
+	fastify.get("/status", (req) => {
+		logger.info(`received request to path ${req.routeOptions.url}`);
+		getStatus();
+	});
 	done();
 }
 
