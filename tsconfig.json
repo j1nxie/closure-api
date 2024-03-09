@@ -22,6 +22,9 @@
     {
       "path": "./server",
     },
+    {
+      "path": "./client",
+    }
   ],
   "exclude": [
     "node_modules"

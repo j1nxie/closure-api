@@ -1,0 +1,42 @@
+{
+	"env": {
+		"browser": true,
+		"es2017": true,
+		"node": true
+	},
+	"plugins": [
+		"cadence"
+	],
+	"extends": [
+		"plugin:cadence/recommended",
+		"plugin:svelte/recommended"
+	],
+	"root": true,
+	"parserOptions": {
+		"sourceType": "module",
+		"ecmaVersion": 2020,
+		"extraFileExtensions": [
+			".svelte"
+		],
+		"project": true
+	},
+	"overrides": [
+		{
+			"files": [
+				"*.svelte"
+			],
+			"parser": "svelte-eslint-parser",
+			"parserOptions": {
+				"parser": "@typescript-eslint/parser"
+			}
+		},
+		{
+			"files": [
+				"**/*.ts"
+			],
+			"rules": {
+				"lines-around-comment": "off"
+			}
+		}
+	]
+}
