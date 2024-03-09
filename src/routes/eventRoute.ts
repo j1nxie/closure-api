@@ -1,17 +1,18 @@
+import client from "../redis.js";
 import { JSDOM } from "jsdom";
 import fetch from "node-fetch";
 import type { FastifyInstance } from "fastify";
-import client from "../redis.js";
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 function eventRouter(fastify: FastifyInstance, options: any, done: any) {
 	fastify.get("/event", async () => {
-		let data = JSON.parse(await client.get("cache") ?? "null");
-		let timestamp = data === null ? null : data.timestamp;
+		const data = JSON.parse((await client.get("cache")) ?? "null");
+		const timestamp = data === null ? null : data.timestamp;
 
 		if (timestamp - Date.now() >= 86400000 || timestamp === null) {
-			let response = await getEvent();
+			const response = await getEvent();
+
 			await client.set("cache", JSON.stringify(response));
 			return response;
 		}
