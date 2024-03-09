@@ -1,20 +1,25 @@
 {
-  "plugins": ["@cadencejs/eslint-plugin"],
-  "extends": [
-    "plugin:@cadencejs/eslint-plugin/recommended",
-    "plugin:prettier/recommended"
-  ],
-  "overrides": [
-	  {
-		  "files": ["*.ts", "*.tsx"],
-		  "extends": [
-			  "plugin:@cadencejs/eslint-plugin/recommended",
-			  "plugin:prettier/recommended"
-		  ],
-		  "parser": "@typescript-eslint/parser",
-		  "plugins": [
-			  "@cadencejs/eslint-plugin"
-		  ]
-	  }
-  ]
+	"plugins": [
+		"cadence"
+	],
+	"extends": [
+		"plugin:cadence/recommended",
+		"plugin:prettier/recommended"
+	],
+	"overrides": [
+		{
+			"files": [
+				"*.ts",
+				"*.tsx"
+			],
+			"extends": [
+				"plugin:cadence/recommended",
+				"plugin:prettier/recommended"
+			],
+			"parser": "@typescript-eslint/parser",
+			"plugins": [
+				"cadence"
+			]
+		}
+	]
 }
