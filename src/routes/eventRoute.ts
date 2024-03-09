@@ -7,7 +7,9 @@ import type { FastifyInstance } from "fastify";
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 function eventRouter(fastify: FastifyInstance, options: any, done: any) {
 	fastify.get("/event", async () => {
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 		const data = JSON.parse((await client.get("cache")) ?? "null");
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
 		const timestamp = data === null ? null : data.timestamp;
 
 		if (Date.now() - timestamp >= 86400000 || timestamp === null) {
@@ -64,7 +66,6 @@ async function getEvent() {
 
 		const document = dom.window.document;
 
-		/* eslint-disable @typescript-eslint/no-non-null-assertion */
 		const eventList = Array.from(
 			document
 				.querySelector(
