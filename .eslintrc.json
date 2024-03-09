@@ -4,5 +4,10 @@
 	],
 	"extends": [
 		"plugin:cadence/recommended"
-	]
+	],
+	"root": true,
+	"parserOptions": {
+		"sourceType": "module",
+		"project": true
+	}
 }

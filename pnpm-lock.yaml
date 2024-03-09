@@ -4,54 +4,78 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-dependencies:
-  '@fastify/cors':
-    specifier: ^9.0.1
-    version: 9.0.1
-  dotenv:
-    specifier: ^16.4.5
-    version: 16.4.5
-  fastify:
-    specifier: ^4.26.2
-    version: 4.26.2
-  jsdom:
-    specifier: ^24.0.0
-    version: 24.0.0
-  node-fetch:
-    specifier: ^3.3.2
-    version: 3.3.2
-  redis:
-    specifier: ^4.6.13
-    version: 4.6.13
-  semver:
-    specifier: ^7.6.0
-    version: 7.6.0
-  winston:
-    specifier: ^3.12.0
-    version: 3.12.0
+importers:
 
-devDependencies:
-  '@types/jsdom':
-    specifier: ^21.1.6
-    version: 21.1.6
-  '@types/semver':
-    specifier: ^7.5.8
-    version: 7.5.8
-  eslint:
-    specifier: ^8.57.0
-    version: 8.57.0
-  eslint-plugin-cadence:
-    specifier: github:j1nxie/Cadence
-    version: github.com/j1nxie/Cadence/35b00071e63c5a2f2f40528f658b7ad9c9f70de4(@typescript-eslint/eslint-plugin@7.1.1)(@typescript-eslint/parser@7.1.1)(eslint@8.57.0)
-  nodemon:
-    specifier: ^3.1.0
-    version: 3.1.0
-  ts-node:
-    specifier: ^10.9.2
-    version: 10.9.2(@types/node@20.11.25)(typescript@5.4.2)
-  typescript:
-    specifier: ^5.4.2
-    version: 5.4.2
+  .:
+    dependencies:
+      dotenv:
+        specifier: ^16.4.5
+        version: 16.4.5
+      node-fetch:
+        specifier: ^3.3.2
+        version: 3.3.2
+      winston:
+        specifier: ^3.12.0
+        version: 3.12.0
+    devDependencies:
+      eslint:
+        specifier: ^8.57.0
+        version: 8.57.0
+      eslint-plugin-cadence:
+        specifier: github:j1nxie/Cadence
+        version: github.com/j1nxie/Cadence/35b00071e63c5a2f2f40528f658b7ad9c9f70de4(@typescript-eslint/eslint-plugin@7.1.1)(@typescript-eslint/parser@7.1.1)(eslint@8.57.0)
+      nodemon:
+        specifier: ^3.1.0
+        version: 3.1.0
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.11.25)(typescript@5.4.2)
+      typescript:
+        specifier: ^5.4.2
+        version: 5.4.2
+
+  server:
+    dependencies:
+      '@fastify/cors':
+        specifier: ^9.0.1
+        version: 9.0.1
+      dotenv:
+        specifier: ^16.4.5
+        version: 16.4.5
+      fastify:
+        specifier: ^4.26.2
+        version: 4.26.2
+      jsdom:
+        specifier: ^24.0.0
+        version: 24.0.0
+      node-fetch:
+        specifier: ^3.3.2
+        version: 3.3.2
+      redis:
+        specifier: ^4.6.13
+        version: 4.6.13
+      semver:
+        specifier: ^7.6.0
+        version: 7.6.0
+      winston:
+        specifier: ^3.12.0
+        version: 3.12.0
+    devDependencies:
+      '@types/jsdom':
+        specifier: ^21.1.6
+        version: 21.1.6
+      '@types/semver':
+        specifier: ^7.5.8
+        version: 7.5.8
+      nodemon:
+        specifier: ^3.1.0
+        version: 3.1.0
+      ts-node:
+        specifier: ^10.9.2
+        version: 10.9.2(@types/node@20.11.25)(typescript@5.4.2)
+      typescript:
+        specifier: ^5.4.2
+        version: 5.4.2
 
 packages:
 

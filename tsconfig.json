@@ -14,11 +14,14 @@
     "forceConsistentCasingInFileNames": true,
     "module": "Node16",
     "moduleResolution": "Node16",
+    "rootDir": ".",
     "resolveJsonModule": true,
     "outDir": "dist"
   },
-  "include": [
-    "src/**/*.ts"
+  "references": [
+    {
+      "path": "./server",
+    },
   ],
   "exclude": [
     "node_modules"

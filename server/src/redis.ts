@@ -4,7 +4,7 @@ import { createClient } from "redis";
 
 dotenv.config();
 
-const client = await createClient({
+const client: ReturnType<typeof createClient> = await createClient({
 	url: `redis://${process.env.REDIS_URL ?? "localhost"}:${process.env.REDIS_PORT ?? "6379"}`,
 })
 	.on("error", (err) => {
