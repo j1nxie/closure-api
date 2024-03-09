@@ -4,6 +4,7 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint --fix .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "dev": "nodemon src/index.ts",
@@ -20,12 +21,10 @@
     }
   },
   "devDependencies": {
-    "@cadencejs/eslint-plugin": "^0.1.0",
     "@types/jsdom": "^21.1.6",
     "@types/semver": "^7.5.8",
     "eslint": "^8.57.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-cadence": "^0.1.1",
+    "eslint-plugin-cadence": "github:j1nxie/Cadence",
     "nodemon": "^3.1.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.2"
@@ -38,11 +37,5 @@
     "node-fetch": "^3.3.2",
     "redis": "^4.6.13",
     "semver": "^7.6.0"
-  },
-  "pnpm": {
-    "overrides": {
-      "@typescript-eslint/eslint-plugin": "7.1.1",
-      "@typescript-eslint/parser": "7.1.1"
-    }
   }
 }
