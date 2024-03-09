@@ -1,4 +1,4 @@
-import winston from "winston";
+import * as winston from "winston";
 
 export function init(appName: string) {
 	winston.loggers.add("default", {
