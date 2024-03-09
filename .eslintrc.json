@@ -3,23 +3,6 @@
 		"cadence"
 	],
 	"extends": [
-		"plugin:cadence/recommended",
-		"plugin:prettier/recommended"
-	],
-	"overrides": [
-		{
-			"files": [
-				"*.ts",
-				"*.tsx"
-			],
-			"extends": [
-				"plugin:cadence/recommended",
-				"plugin:prettier/recommended"
-			],
-			"parser": "@typescript-eslint/parser",
-			"plugins": [
-				"cadence"
-			]
-		}
+		"plugin:cadence/recommended"
 	]
 }
