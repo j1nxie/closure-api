@@ -10,7 +10,7 @@ function eventRouter(fastify: FastifyInstance, options: any, done: any) {
 		const data = JSON.parse((await client.get("cache")) ?? "null");
 		const timestamp = data === null ? null : data.timestamp;
 
-		if (timestamp - Date.now() >= 86400000 || timestamp === null) {
+		if (Date.now() - timestamp >= 86400000 || timestamp === null) {
 			const response = await getEvent();
 
 			await client.set("cache", JSON.stringify(response));
