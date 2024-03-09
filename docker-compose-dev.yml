@@ -1,0 +1,39 @@
+version: "3.9"
+services:
+  redis:
+    container_name: redis
+    command: redis-server --save 60 1 --loglevel warning
+    image: redis:6
+    restart: always
+    ports:
+      - '6379:6379'
+    volumes:
+      - closure-redis:/data
+  closure-server:
+    container_name: closure-server
+    build:
+      dockerfile: Dockerfile.server
+      target: dev
+    depends_on:
+      redis:
+        condition: service_started
+    links:
+      - redis
+    volumes:
+      - ./:/app
+    ports:
+      - '4000:4000'
+    environment:
+      REDIS_URL: redis
+      PORT: 4000
+      NODE_ENV: "dev"
+  closure-client:
+    container_name: closure-client
+    build:
+      dockerfile: Dockerfile.client
+    volumes:
+      - ./:/app
+    ports:
+      - '3000:3000'
+volumes:
+  closure-redis:
