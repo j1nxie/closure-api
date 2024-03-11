@@ -9,7 +9,7 @@
 	],
 	"extends": [
 		"plugin:cadence/recommended",
-		"plugin:svelte/recommended"
+		"plugin:svelte/prettier"
 	],
 	"root": true,
 	"parserOptions": {

@@ -7,6 +7,8 @@ node_modules
 .env.*
 !.env.example
 svelte.config.js
+postcss.config.js
+tailwind.config.js
 
 # Ignore files for PNPM, NPM and YARN
 pnpm-lock.yaml
