@@ -1,4 +1,3 @@
-import logger from "./logger.js";
 import eventRouter from "./routes/eventRoute.js";
 import statusRouter from "./routes/statusRoute.js";
 import cors from "@fastify/cors";
@@ -9,6 +8,7 @@ dotenv.config();
 
 const app = fastify({
 	ignoreTrailingSlash: true,
+	logger: true,
 });
 
 void app.register(eventRouter, { prefix: "/api" });
@@ -22,10 +22,9 @@ async function start() {
 		await app.register(cors);
 		await app.listen({ port: Number(PORT), host: HOST });
 
-		logger.info(`binding to ${HOST} at port ${PORT}.`);
-		logger.info(`closure-api available on http://${HOST}:${PORT}.`);
+		app.log.info(`binding to ${HOST} at port ${PORT}.`);
 	} catch (err) {
-		logger.error(`fatal error: ${err}`);
+		app.log.error(err);
 		process.exit(1);
 	}
 }
