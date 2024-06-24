@@ -1,0 +1,12 @@
+services:
+  closure-api:
+    container_name: closure-api
+    restart: on-failure
+    build: .
+    environment:
+      - REDIS_URL=redis
+
+  redis:
+    container_name: redis
+    image: redis:latest
+    restart: always
