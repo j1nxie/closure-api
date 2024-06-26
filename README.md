@@ -1,7 +1,9 @@
 # closure-api
 
-`closure-api` is a simple API used for obtaining the current running event
-for Arknights, done by scraping https://gamepress.gg/.
+> [!WARNING]
+> the hosted instance at https://closure.rylie.moe/ is currently down, as Gamepress is in the middle of rewriting their sites and redoing their infrastructure, and the Arknights wiki has yet to go back online.
+
+`closure-api` is a simple API used for obtaining the current running event for Arknights, done by scraping https://gamepress.gg/.
 
 ## license
 
@@ -16,6 +18,4 @@ at your option.
 
 ## contribution
 
-unless you explicitly state otherwise, any contribution intentionally submitted
-for inclusion in the work by you, as defined in the Apache-2.0 license, shall
-be dual licensed as above, without any additional terms or conditions.
+unless you explicitly state otherwise, any contribution intentionally submitted for inclusion in the work by you, as defined in the Apache-2.0 license, shall be dual licensed as above, without any additional terms or conditions.
