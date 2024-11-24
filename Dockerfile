@@ -5,7 +5,7 @@ WORKDIR /app
 COPY go.mod go.sum ./
 RUN go mod download
 
-COPY * ./
+COPY ./ ./
 
 RUN CGO_ENABLED=0 GOOS=linux go build
 
@@ -13,7 +13,7 @@ FROM gcr.io/distroless/base-debian11 AS build-release-stage
 
 WORKDIR /app
 
-COPY --from=build /app/docker-gs-ping ./docker-gs-ping
+COPY --from=build /app/closure-api ./closure-api
 
 USER nonroot:nonroot
 
