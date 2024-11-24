@@ -27,7 +27,10 @@ func main() {
 	log.Printf("closure listening on %v", listenAddr)
 
 	r := chi.NewRouter()
+	r.Use(middleware.RequestID)
+	r.Use(middleware.RealIP)
 	r.Use(middleware.Logger)
+	r.Use(middleware.Recoverer)
 
 	r.Get("/api/status", routes.GetStatus)
 	r.Get("/api/event", routes.GetEvent)
