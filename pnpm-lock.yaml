@@ -41,7 +41,7 @@ importers:
         version: 8.57.0
       eslint-plugin-cadence:
         specifier: github:j1nxie/Cadence
-        version: git+https://git@github.com:j1nxie/Cadence.git#4d42ebbd170ff9e475c5dda897c3dd54053b46ba(@typescript-eslint/eslint-plugin@7.1.1(@typescript-eslint/parser@7.1.1(eslint@8.57.0)(typescript@5.4.2))(eslint@8.57.0)(typescript@5.4.2))(@typescript-eslint/parser@7.1.1(eslint@8.57.0)(typescript@5.4.2))(eslint@8.57.0)
+        version: git+https://git@github.com:j1nxie/Cadence.git#e4fd31b1f08f52531835d4329909a088f6ef9ef3(@typescript-eslint/eslint-plugin@7.1.1(@typescript-eslint/parser@7.1.1(eslint@8.57.0)(typescript@5.4.2))(eslint@8.57.0)(typescript@5.4.2))(@typescript-eslint/parser@7.1.1(eslint@8.57.0)(typescript@5.4.2))(eslint@8.57.0)
       nodemon:
         specifier: ^3.1.0
         version: 3.1.0
@@ -481,8 +481,8 @@ packages:
   create-require@1.1.1:
     resolution: {integrity: sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ==}
 
-  cross-spawn@7.0.3:
-    resolution: {integrity: sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==}
+  cross-spawn@7.0.6:
+    resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
     engines: {node: '>= 8'}
 
   cssstyle@4.0.1:
@@ -647,8 +647,8 @@ packages:
       eslint-import-resolver-webpack:
         optional: true
 
-  eslint-plugin-cadence@git+https://git@github.com:j1nxie/Cadence.git#4d42ebbd170ff9e475c5dda897c3dd54053b46ba:
-    resolution: {commit: 4d42ebbd170ff9e475c5dda897c3dd54053b46ba, repo: git@github.com:j1nxie/Cadence.git, type: git}
+  eslint-plugin-cadence@git+https://git@github.com:j1nxie/Cadence.git#e4fd31b1f08f52531835d4329909a088f6ef9ef3:
+    resolution: {commit: e4fd31b1f08f52531835d4329909a088f6ef9ef3, repo: git@github.com:j1nxie/Cadence.git, type: git}
     version: 0.2.0
     engines: {node: 12.x || 14.x || >= 16}
     peerDependencies:
@@ -733,6 +733,7 @@ packages:
   eslint@8.57.0:
     resolution: {integrity: sha512-dZ6+mexnaTIbSBZWgou51U6OmzIhYM2VcNdtiTtI7qPNZm35Akpr0f6vtw3w1Kmn5PYo+tZVfh13WrhpS6oLqQ==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    deprecated: This version is no longer supported. Please see https://eslint.org/version-support for other options.
     hasBin: true
 
   espree@9.6.1:
@@ -2308,7 +2309,7 @@ snapshots:
 
   create-require@1.1.1: {}
 
-  cross-spawn@7.0.3:
+  cross-spawn@7.0.6:
     dependencies:
       path-key: 3.1.1
       shebang-command: 2.0.0
@@ -2542,7 +2543,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-cadence@git+https://git@github.com:j1nxie/Cadence.git#4d42ebbd170ff9e475c5dda897c3dd54053b46ba(@typescript-eslint/eslint-plugin@7.1.1(@typescript-eslint/parser@7.1.1(eslint@8.57.0)(typescript@5.4.2))(eslint@8.57.0)(typescript@5.4.2))(@typescript-eslint/parser@7.1.1(eslint@8.57.0)(typescript@5.4.2))(eslint@8.57.0):
+  eslint-plugin-cadence@git+https://git@github.com:j1nxie/Cadence.git#e4fd31b1f08f52531835d4329909a088f6ef9ef3(@typescript-eslint/eslint-plugin@7.1.1(@typescript-eslint/parser@7.1.1(eslint@8.57.0)(typescript@5.4.2))(eslint@8.57.0)(typescript@5.4.2))(@typescript-eslint/parser@7.1.1(eslint@8.57.0)(typescript@5.4.2))(eslint@8.57.0):
     dependencies:
       '@types/estree': 1.0.5
       '@typescript-eslint/eslint-plugin': 7.1.1(@typescript-eslint/parser@7.1.1(eslint@8.57.0)(typescript@5.4.2))(eslint@8.57.0)(typescript@5.4.2)
@@ -2674,7 +2675,7 @@ snapshots:
       '@ungap/structured-clone': 1.2.0
       ajv: 6.12.6
       chalk: 4.1.2
-      cross-spawn: 7.0.3
+      cross-spawn: 7.0.6
       debug: 4.3.4(supports-color@5.5.0)
       doctrine: 3.0.0
       escape-string-regexp: 4.0.0
