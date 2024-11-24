@@ -1,33 +1,20 @@
-FROM node:lts-alpine AS builder
+FROM golang:1.23 AS build
 
-LABEL version="1.3.2"
-LABEL description="an API to fetch the current arknights event from gamepress.gg"
-LABEL maintainer="j1nxie <rylie@rylie.moe>"
-
-RUN npm install --silent -g pnpm
-RUN apk update && apk upgrade
-RUN apk add --no-cache curl
-
-FROM builder AS install
 WORKDIR /app
 
-COPY pnpm-lock.yaml .
-RUN pnpm fetch
+COPY go.mod go.sum ./
+RUN go mod download
 
-COPY src ./src
-COPY *.json ./
+COPY * ./
 
-RUN pnpm install --offline --frozen-lockfile
+RUN CGO_ENABLED=0 GOOS=linux go build -o
 
-FROM install AS build
+FROM gcr.io/distroless/base-debian11 AS build-release-stage
 
-RUN pnpm build
-
-FROM builder AS prod
-COPY --from=build /app /app
-
-HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 CMD curl -f http://localhost:4000/api/status || exit 1
 WORKDIR /app
 
-ENV NODE_PATH=dist/
-CMD ["node", "dist/index.js"]
+COPY --from=build /app/docker-gs-ping ./docker-gs-ping
+
+USER nonroot:nonroot
+
+ENTRYPOINT ["./closure-api"]
