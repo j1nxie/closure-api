@@ -1,8 +1,5 @@
 # closure-api
 
-> [!WARNING]
-> the hosted instance at https://closure.rylie.moe/ is currently down, as Gamepress is in the middle of rewriting their sites and redoing their infrastructure, and the Arknights wiki has yet to go back online.
-
 `closure-api` is a simple API used for obtaining upcoming and currently running events for Arknights, done by scraping [Arknights Terra Wiki](https://arknights.wiki.gg/).
 
 ## license
