@@ -10,8 +10,10 @@ import (
 	"github.com/j1nxie/closure-api/v2/models"
 )
 
+const BaseUrl string = "https://arknights.wiki.gg/"
+
 func ScrapeWiki() (*models.EventResponse, error) {
-	res, err := http.Get("https://arknights.wiki.gg/wiki/Arknights_Terra_Wiki")
+	res, err := http.Get(BaseUrl)
 
 	if err != nil {
 		log.Print(err)
