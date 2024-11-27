@@ -34,6 +34,9 @@ func main() {
 
 	r.Get("/api/status", routes.GetStatus)
 	r.Get("/api/event", routes.GetEvent)
+	r.Get("/favicon.ico", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "assets/favicon.ico")
+	})
 
 	if err := http.ListenAndServe(listenAddr, r); err != nil {
 		log.Fatal(err)
