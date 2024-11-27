@@ -12,6 +12,35 @@ import (
 
 const BaseUrl string = "https://arknights.wiki.gg/"
 
+func parseForEvent(html *goquery.Selection) []models.Event {
+	var events []models.Event
+
+	html.Find("tr").Each(func(i int, tr *goquery.Selection) {
+		server := tr.Find("div b").First().Text()
+
+		tr.Find(".imagefit span").Each(func(j int, span *goquery.Selection) {
+			eventName := span.Text()
+
+			timeStr := tr.Find(".countdowndate").Eq(j).Text()
+
+			layout := "2 January 2006 15:04 -0700"
+
+			t, err := time.Parse(layout, timeStr)
+			if err != nil {
+				return
+			}
+
+			event := models.Event{
+				Server: server, Name: eventName, EndDate: t,
+			}
+
+			events = append(events, event)
+		})
+	})
+
+	return events
+}
+
 func ScrapeWiki() (*models.EventResponse, error) {
 	res, err := http.Get(BaseUrl)
 
@@ -34,56 +63,8 @@ func ScrapeWiki() (*models.EventResponse, error) {
 		return nil, err
 	}
 
-	var currentEvents []models.Event
-	var upcomingEvents []models.Event
-
-	// FIXME: sus asf code, refactor this cuz these are the same
-
-	doc.Find("div.mp-head:contains('Upcoming Events')").Prev().Find("tr").Each(func(i int, tr *goquery.Selection) {
-		server := tr.Find("div b").First().Text()
-
-		tr.Find(".imagefit span").Each(func(j int, span *goquery.Selection) {
-			eventName := span.Text()
-
-			timeStr := tr.Find(".countdowndate").Eq(j).Text()
-
-			layout := "2 January 2006 15:04 -0700"
-
-			t, err := time.Parse(layout, timeStr)
-			if err != nil {
-				return
-			}
-
-			event := models.Event{
-				Server: server, Name: eventName, EndDate: t,
-			}
-
-			currentEvents = append(currentEvents, event)
-		})
-	})
-
-	doc.Find("div.mp-head:contains('Upcoming Events')").Next().Find("tr").Each(func(i int, tr *goquery.Selection) {
-		server := tr.Find("div b").First().Text()
-
-		tr.Find(".imagefit span").Each(func(j int, span *goquery.Selection) {
-			eventName := span.Text()
-
-			timeStr := tr.Find(".countdowndate").Eq(j).Text()
-
-			layout := "2 January 2006 15:04 -0700"
-
-			t, err := time.Parse(layout, timeStr)
-			if err != nil {
-				return
-			}
-
-			event := models.Event{
-				Server: server, Name: eventName, EndDate: t,
-			}
-
-			upcomingEvents = append(upcomingEvents, event)
-		})
-	})
+	currentEvents := parseForEvent(doc.Find("div.mp-head:contains('Upcoming Events')").Prev())
+	upcomingEvents := parseForEvent(doc.Find("div.mp-head:contains('Upcoming Events')").Next())
 
 	eventResp := models.EventResponse{
 		UpcomingEvents: upcomingEvents, CurrentEvents: currentEvents, FetchedAt: time.Now(),
