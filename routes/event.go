@@ -10,7 +10,7 @@ import (
 	"github.com/j1nxie/closure-api/v2/models"
 )
 
-const BaseUrl string = "https://arknights.wiki.gg/"
+const BaseUrl string = "https://arknights.wiki.gg"
 
 func parseForEvent(html *goquery.Selection) []models.Event {
 	var events []models.Event
@@ -25,13 +25,18 @@ func parseForEvent(html *goquery.Selection) []models.Event {
 
 			layout := "2 January 2006 15:04 -0700"
 
+			img := tr.Find("img").Eq(j).AttrOr("src", "")
+			if img != "" {
+				img = BaseUrl + img
+			}
+
 			t, err := time.Parse(layout, timeStr)
 			if err != nil {
 				return
 			}
 
 			event := models.Event{
-				Server: server, Name: eventName, EndDate: t,
+				Server: server, Name: eventName, EndDate: t, ImageUrl: img,
 			}
 
 			events = append(events, event)

@@ -3,9 +3,10 @@ package models
 import "time"
 
 type Event struct {
-	Name    string    `json:"name"`
-	Server  string    `json:"server"`
-	EndDate time.Time `json:"end_date"`
+	Name     string    `json:"name"`
+	Server   string    `json:"server"`
+	EndDate  time.Time `json:"end_date"`
+	ImageUrl string    `json:"image_url"`
 }
 
 type EventResponse struct {
